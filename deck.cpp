@@ -39,9 +39,9 @@ Deck::Deck(int nombreDeJoueurs) {
   cartes.push_back(verrerie);
 		  
   // Batiments civils
-  cartes.push_back(Carte("Autel", bleu));
-  cartes.push_back(Carte("Théâtre", bleu));
-  cartes.push_back(Carte("Bains", bleu, Cout(0,0,1)));
+  cartes.push_back(Carte("Autel", bleu, Cout(), false, 2));
+  cartes.push_back(Carte("Théâtre", bleu, Cout(), false, 2));
+  cartes.push_back(Carte("Bains", bleu, Cout(0,0,1), false, 3));
   
   // Batiments commerciaux
   cartes.push_back(Carte("Comptoir Ouest", jaune));

@@ -2,7 +2,7 @@
  #include <cstring>
  #include <cstdlib>
 
- #define symbole true
+#define symbole false
 
  std::string getSymbole(Ressource ressource) {
    switch (ressource) {

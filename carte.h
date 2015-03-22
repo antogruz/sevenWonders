@@ -17,11 +17,13 @@ class Carte {
   Cout cout;
   std::list<Ressource> ressources;
   bool ressourcesChoix;
+  int points;
  public:
 
   Carte(std::string name, Couleur couleur);
   Carte(std::string name, Couleur couleur, Cout cout);
   Carte(std::string name, Couleur couleur, Cout cout, bool ressourcesChoix);
+  Carte(std::string name, Couleur couleur, Cout cout, bool ressourcesChoix, int points);
   
   std::string getName() const;
   Couleur getCouleur() const;
