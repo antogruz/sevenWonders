@@ -49,9 +49,9 @@ Deck::Deck(int nombreDeJoueurs) {
   cartes.push_back(Carte("Marché", jaune));
   
   // Batiments militaires
-  cartes.push_back(Carte("Tour de Garde", rouge, Cout(0,0,0,1)));
-  cartes.push_back(Carte("Caserne", rouge, Cout(0,1)));
-  cartes.push_back(Carte("Palissade", rouge, Cout(1)));
+  cartes.push_back(Carte("Tour de Garde", rouge, Cout(0,0,0,1), false, 0, 1));
+  cartes.push_back(Carte("Caserne", rouge, Cout(0,1), false, 0, 1));
+  cartes.push_back(Carte("Palissade", rouge, Cout(1), false, 0, 1));
 
   // Batiments scientifiques
   cartes.push_back(Carte("Atelier", vert, Cout(0,0,0,0,0,1)));

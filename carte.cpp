@@ -7,6 +7,7 @@ Carte::Carte(std::string name, Couleur couleur) {
   this->ressourcesChoix = false;
   this->cout = Cout();
   this->points = 0;
+  this->boucliers = 0;
 }
 
 Carte::Carte(std::string name, Couleur couleur, Cout cout) {
@@ -15,6 +16,7 @@ Carte::Carte(std::string name, Couleur couleur, Cout cout) {
   this->ressourcesChoix = false;
   this->cout = cout;
   this->points = 0;
+  this->boucliers = 0;
 }
 
 Carte::Carte(std::string name, Couleur couleur, Cout cout, bool ressourcesChoix) {
@@ -23,6 +25,7 @@ Carte::Carte(std::string name, Couleur couleur, Cout cout, bool ressourcesChoix)
   this->cout = cout;
   this->ressourcesChoix = ressourcesChoix;
   this->points = 0;
+  this->boucliers = 0;
 }
 
 Carte::Carte(std::string name, Couleur couleur, Cout cout, bool ressourcesChoix, int points) {
@@ -31,6 +34,16 @@ Carte::Carte(std::string name, Couleur couleur, Cout cout, bool ressourcesChoix,
   this->cout = cout;
   this->ressourcesChoix = ressourcesChoix;
   this->points = points;
+  this->boucliers = 0;
+}
+
+Carte::Carte(std::string name, Couleur couleur, Cout cout, bool ressourcesChoix, int points, int boucliers) {
+  this->name = name;
+  this->couleur = couleur;
+  this->cout = cout;
+  this->ressourcesChoix = ressourcesChoix;
+  this->points = points;
+  this->boucliers = boucliers;
 }
 
 void Carte::addRessource(Ressource ressource) {
@@ -58,6 +71,9 @@ void Carte::afficher(std::ostream& Out) const {
   }
   if (points > 0) {
     Out << bleu << " (/" << points << " points\\)" << couleur;
+  }
+  for (int i = 0; i < boucliers; i++) {
+    Out << rouge << " (X)" << couleur;
   }
   Out << "\n";
   Out << blanc;

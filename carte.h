@@ -18,12 +18,14 @@ class Carte {
   std::list<Ressource> ressources;
   bool ressourcesChoix;
   int points;
+  int boucliers;
  public:
 
   Carte(std::string name, Couleur couleur);
   Carte(std::string name, Couleur couleur, Cout cout);
   Carte(std::string name, Couleur couleur, Cout cout, bool ressourcesChoix);
   Carte(std::string name, Couleur couleur, Cout cout, bool ressourcesChoix, int points);
+  Carte(std::string name, Couleur couleur, Cout cout, bool ressourcesChoix, int points, int boucliers);
   
   std::string getName() const;
   Couleur getCouleur() const;
