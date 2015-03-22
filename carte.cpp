@@ -50,6 +50,10 @@ void Carte::addRessource(Ressource ressource) {
   ressources.push_back(ressource);
 }
 
+void Carte::addSymbole(Symbole symbole) {
+  symboles.push_back(symbole);
+}
+
 std::string Carte::getName() const {
   return name;
 }
@@ -74,6 +78,9 @@ void Carte::afficher(std::ostream& Out) const {
   }
   for (int i = 0; i < boucliers; i++) {
     Out << rouge << " (X)" << couleur;
+  }
+  for (std::list<Symbole>::const_iterator it = symboles.begin(); it != symboles.end(); it++) {
+    Out << " " << *it;
   }
   Out << "\n";
   Out << blanc;

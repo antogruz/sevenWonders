@@ -7,6 +7,7 @@
 #include <list>
 #include "ressources.h"
 #include "cout.h"
+#include "symbole.h"
 
 class Carte {
 
@@ -19,18 +20,22 @@ class Carte {
   bool ressourcesChoix;
   int points;
   int boucliers;
- public:
+  std::list<Symbole> symboles;
 
+ public:
+  // Construction des cartes
   Carte(std::string name, Couleur couleur);
   Carte(std::string name, Couleur couleur, Cout cout);
   Carte(std::string name, Couleur couleur, Cout cout, bool ressourcesChoix);
   Carte(std::string name, Couleur couleur, Cout cout, bool ressourcesChoix, int points);
   Carte(std::string name, Couleur couleur, Cout cout, bool ressourcesChoix, int points, int boucliers);
-  
+  void addRessource(Ressource ressource);
+  void addSymbole(Symbole symbole);
+
+  // Accesseurs
   std::string getName() const;
   Couleur getCouleur() const;
   void afficher(std::ostream& Out) const;
-  void addRessource(Ressource ressource);
   bool hasProduction() const;
   bool isChoix() const;
   Cout getCout() const;

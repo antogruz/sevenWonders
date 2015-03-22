@@ -54,9 +54,15 @@ Deck::Deck(int nombreDeJoueurs) {
   cartes.push_back(Carte("Palissade", rouge, Cout(1), false, 0, 1));
 
   // Batiments scientifiques
-  cartes.push_back(Carte("Atelier", vert, Cout(0,0,0,0,0,1)));
-  cartes.push_back(Carte("Officine", vert, Cout(0,0,0,0,1)));
-  cartes.push_back(Carte("Scriptorium", vert, Cout(0,0,0,0,0,0,1)));
+  Carte atelier("Atelier", vert, Cout(0,0,0,0,1));
+  atelier.addSymbole(roue);
+  cartes.push_back(atelier);
+  Carte officine("Officine", vert, Cout(0,0,0,0,0,1));
+  officine.addSymbole(compas);
+  cartes.push_back(officine);
+  Carte scriptorium("Scriptorium", vert, Cout(0,0,0,0,0,0,1));
+  scriptorium.addSymbole(tablette);
+  cartes.push_back(scriptorium);
   
 }
 
