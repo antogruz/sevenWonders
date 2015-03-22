@@ -1,0 +1,4 @@
+*.o
+sevenWonders
+*.pro
+Makefile
