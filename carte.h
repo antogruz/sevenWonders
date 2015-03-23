@@ -8,7 +8,10 @@
 #include "ressources.h"
 #include "cout.h"
 #include "symbole.h"
+#include "joueur.h"
+#include "situationcommerciale.h"
 
+class Joueur;
 class Carte {
 
  private:
@@ -43,8 +46,23 @@ class Carte {
   int getRessourcesNumber() const;
   std::list<Ressource>::const_iterator ressourcesBegin() const { return ressources.begin(); }
   std::list<Ressource>::const_iterator ressourcesEnd() const { return ressources.end(); }
+
+  // Actions
+  virtual void onPlay(Joueur& joueur) {};
 };
 
 std::ostream& operator << (std::ostream& Out, const Carte& carte);
+
+class CarteCommerce : public Carte {
+ private:
+  SituationCommerciale nouveauxTarifs;
+  
+ public:
+  // Constructeurs
+  CarteCommerce(std::string name, Couleur couleur, SituationCommerciale nouveauxTarifs);
+
+  void onPlay(Joueur& joueur);
+};
+
 
 #endif

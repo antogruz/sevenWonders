@@ -10,12 +10,26 @@ bool BuyFoncteur::operator()(Joueur& joueur, Side side, int numero)
   for (int i = 1; i < numero; i++) {
     it++;
   }
-  if (joueur.pieces < 2) {
+  // *it est la carte que le joueur veut acheter
+  int prix = situationCommerciale.getPrix(side, it->getCouleur());
+  if (joueur.pieces < prix) {
     return false;
   }
   joueur.ressourcesBought.push_back(*it);
   ressources.erase(it);
-  joueur.pieces -= 2;
-  joueur.piecesToGive[side] += 2;
+  joueur.pieces -= prix;
+  joueur.piecesToGive[side] += prix;
   return true;
+}
+
+// -----------------
+// getters & setters
+// -----------------
+
+const SituationCommerciale& BuyFoncteur::getSituationCommerciale() const {
+  return situationCommerciale;
+}
+
+SituationCommerciale& BuyFoncteur::getSituationCommerciale() {
+  return situationCommerciale;
 }

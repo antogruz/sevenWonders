@@ -116,8 +116,22 @@ int Carte::getRessourcesNumber() const {
   return ressources.size();
 }
 
+CarteCommerce::CarteCommerce(std::string name, Couleur couleur, SituationCommerciale nouveauxTarifs):Carte(name, couleur) {
+  this->nouveauxTarifs = nouveauxTarifs;
+}
+
+void CarteCommerce::onPlay(Joueur& joueur) {
+  joueur.getSituationCommerciale().appliquerReduction(nouveauxTarifs);
+  std::cout << joueur.getSituationCommerciale().getPrixRessource(left) << std::endl;
+  std::cout << joueur.getSituationCommerciale().getPrixRessource(right) << std::endl;
+  std::cout << joueur.getSituationCommerciale().getPrixProduit(left) << std::endl;
+  std::cout << joueur.getSituationCommerciale().getPrixProduit(right) << std::endl;
+}
+
 std::ostream& operator << (std::ostream& Out, const Carte& carte)
 {
   carte.afficher(Out);
   return Out;
 }
+
+

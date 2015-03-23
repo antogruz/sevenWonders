@@ -8,6 +8,7 @@
 #include "side.h"
 #include "buyfoncteur.h"
 
+class Carte;
 class Joueur {
 
   friend class BuyFoncteur;
@@ -29,6 +30,8 @@ class Joueur {
   Joueur() {pieces = 3; humain = false;};
   Joueur(bool humain) { pieces = 3; this->humain = humain; };
   
+  const SituationCommerciale& getSituationCommerciale() const;
+  SituationCommerciale& getSituationCommerciale();
   void showConstructions() const;
   void showHand() const;
   void showRessourcesBought() const;

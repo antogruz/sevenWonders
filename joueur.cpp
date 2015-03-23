@@ -179,3 +179,12 @@ bool canCoutBeSatisfied(Cout & cout, std::list<Carte> & cartes) {
     return false;
   }
 }
+// Getters and Setters
+const SituationCommerciale& Joueur::getSituationCommerciale() const {
+  return buy.getSituationCommerciale();
+}
+
+SituationCommerciale & Joueur::getSituationCommerciale() {
+  return buy.getSituationCommerciale();
+}
+
