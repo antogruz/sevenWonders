@@ -89,7 +89,8 @@ void Jeu::draft() {
     }
   }
   
-  std::vector<Carte> tampon = getHumain().getHand();
+
+  std::vector<Carte*> tampon = getHumain().getHand();
   unsigned int i = 1;
   for (std::vector<Joueur>::iterator it = joueurs.begin(); it != joueurs.end(); it++) {
     if (i < joueurs.size()) {
@@ -101,11 +102,11 @@ void Jeu::draft() {
 }
 
 bool Jeu::buyTo(Side side) {
-  std::list<Carte> ressources = getHumain().getRessourcesToBuy(side);
-  std::list<Carte>::const_iterator it;
+  std::list<Carte*> ressources = getHumain().getRessourcesToBuy(side);
+  std::list<Carte*>::const_iterator it;
   int i = 1;
   for (it = ressources.begin(); it != ressources.end(); it++) {
-    std::cout << i << " " << *it;
+    std::cout << i << " " << **it;
     i++;
   }
   std::cout << "De quelle carte voulez vous acheter une ressource ?\n";

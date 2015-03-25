@@ -26,6 +26,11 @@ void SituationCommerciale::appliquerReduction(SituationCommerciale nouveauxTarif
   }
 }
 
+void SituationCommerciale::show(std::ostream& Out) const {
+  Out << "Prix à gauche -> Ressources : " << prixRessource.at(left) << " | Produits : " << prixProduit.at(left) << std::endl;
+  Out << "Prix à droite -> Ressources : " << prixRessource.at(right) << " | Produits : " << prixProduit.at(right) << std::endl;
+}
+
 // -----------------
 // getters & setters
 // -----------------
@@ -57,4 +62,13 @@ int SituationCommerciale::getPrix(Side side, Couleur couleur) const{
     return 10000;
     break;
   }
+}
+
+// ---------
+// Fonctions
+// ---------
+
+std::ostream& operator << (std::ostream& Out, const SituationCommerciale& situation) {
+  situation.show(Out);
+  return Out;
 }

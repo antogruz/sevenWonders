@@ -48,7 +48,10 @@ class Carte {
   std::list<Ressource>::const_iterator ressourcesEnd() const { return ressources.end(); }
 
   // Actions
-  virtual void onPlay(Joueur& joueur) {};
+  virtual void onPlay(Joueur& joueur) {std::cout << "Aucun effet" << std::endl;};
+  virtual void talk() {
+    std::cout << "Je suis une carte" << std::endl;
+  }
 };
 
 std::ostream& operator << (std::ostream& Out, const Carte& carte);
@@ -62,6 +65,9 @@ class CarteCommerce : public Carte {
   CarteCommerce(std::string name, Couleur couleur, SituationCommerciale nouveauxTarifs);
 
   void onPlay(Joueur& joueur);
+  void talk() {
+    std::cout << "Je suis une carte Commerce" << std::endl;
+  }
 };
 
 

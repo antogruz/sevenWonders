@@ -4,6 +4,7 @@
 #include <map>
 #include "side.h"
 #include "couleurs.h"
+#include <iostream>
 
 class SituationCommerciale {
 
@@ -16,6 +17,7 @@ class SituationCommerciale {
   SituationCommerciale(std::map<Side,int> prixRessource, std::map<Side,int> prixProduit);
 
   void appliquerReduction(SituationCommerciale nouveauxTarifs);
+  void show(std::ostream& Out) const;
 
   // getters & setters
   void setPrixRessource(Side side, int prix);
@@ -25,5 +27,7 @@ class SituationCommerciale {
   int getPrix(Side side, Couleur couleur) const;
 
 };
+
+std::ostream& operator << (std::ostream& Out, const SituationCommerciale& situation);
 
 #endif
