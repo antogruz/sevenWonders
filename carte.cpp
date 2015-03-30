@@ -6,6 +6,8 @@ Carte::Carte(std::string name, Couleur couleur) {
   this->couleur = couleur;
   this->ressourcesChoix = false;
   this->cout = Cout();
+  this->points = 0;
+  this->boucliers = 0;
 }
 
 Carte::Carte(std::string name, Couleur couleur, Cout cout) {
@@ -13,6 +15,8 @@ Carte::Carte(std::string name, Couleur couleur, Cout cout) {
   this->couleur = couleur;
   this->ressourcesChoix = false;
   this->cout = cout;
+  this->points = 0;
+  this->boucliers = 0;
 }
 
 Carte::Carte(std::string name, Couleur couleur, Cout cout, bool ressourcesChoix) {
@@ -20,10 +24,34 @@ Carte::Carte(std::string name, Couleur couleur, Cout cout, bool ressourcesChoix)
   this->couleur = couleur;
   this->cout = cout;
   this->ressourcesChoix = ressourcesChoix;
+  this->points = 0;
+  this->boucliers = 0;
+}
+
+Carte::Carte(std::string name, Couleur couleur, Cout cout, bool ressourcesChoix, int points) {
+  this->name = name;
+  this->couleur = couleur;
+  this->cout = cout;
+  this->ressourcesChoix = ressourcesChoix;
+  this->points = points;
+  this->boucliers = 0;
+}
+
+Carte::Carte(std::string name, Couleur couleur, Cout cout, bool ressourcesChoix, int points, int boucliers) {
+  this->name = name;
+  this->couleur = couleur;
+  this->cout = cout;
+  this->ressourcesChoix = ressourcesChoix;
+  this->points = points;
+  this->boucliers = boucliers;
 }
 
 void Carte::addRessource(Ressource ressource) {
   ressources.push_back(ressource);
+}
+
+void Carte::addSymbole(Symbole symbole) {
+  symboles.push_back(symbole);
 }
 
 std::string Carte::getName() const {
@@ -44,6 +72,15 @@ void Carte::afficher(std::ostream& Out) const {
     } else {
       Out << " " << *it;
     }
+  }
+  if (points > 0) {
+    Out << bleu << " (/" << points << " points\\)" << couleur;
+  }
+  for (int i = 0; i < boucliers; i++) {
+    Out << rouge << " (X)" << couleur;
+  }
+  for (std::list<Symbole>::const_iterator it = symboles.begin(); it != symboles.end(); it++) {
+    Out << " " << *it;
   }
   Out << "\n";
   Out << blanc;
@@ -79,8 +116,22 @@ int Carte::getRessourcesNumber() const {
   return ressources.size();
 }
 
+CarteCommerce::CarteCommerce(std::string name, Couleur couleur, SituationCommerciale nouveauxTarifs):Carte(name, couleur) {
+  this->nouveauxTarifs = nouveauxTarifs;
+}
+
+void CarteCommerce::onPlay(Joueur& joueur) {
+  joueur.getSituationCommerciale().appliquerReduction(nouveauxTarifs);
+  std::cout << joueur.getSituationCommerciale().getPrixRessource(left) << std::endl;
+  std::cout << joueur.getSituationCommerciale().getPrixRessource(right) << std::endl;
+  std::cout << joueur.getSituationCommerciale().getPrixProduit(left) << std::endl;
+  std::cout << joueur.getSituationCommerciale().getPrixProduit(right) << std::endl;
+}
+
 std::ostream& operator << (std::ostream& Out, const Carte& carte)
 {
   carte.afficher(Out);
   return Out;
 }
+
+

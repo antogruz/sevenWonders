@@ -11,15 +11,16 @@ class Deck {
   
  private:
   
-  std::list<Carte> cartes;
+  std::list<Carte*> cartes;
   
  public:
   Deck(int nombreDeJoueurs);
   
   void shuffle();
+  void show();
   void deal(std::vector<Joueur> & joueurs);
 
 };
 
-Carte takeRandomCarte(std::list<Carte> & cartes);
+Carte* takeRandomCarte(std::list<Carte*> & cartes);
 #endif

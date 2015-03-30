@@ -3,18 +3,21 @@
 
 #include <map>
 #include "side.h"
+#include "situationcommerciale.h"
 
 class Joueur;
 class BuyFoncteur {
  
  private:
-  std::map<Side,int> prixRessource;
-  std::map<Side,int> prixProduit;
+  SituationCommerciale situationCommerciale;
 
  public:
   BuyFoncteur();
   bool operator ( ) (Joueur& joueur, Side side, int numero);
   
+  // getters & setters
+  const SituationCommerciale& getSituationCommerciale() const;
+  SituationCommerciale& getSituationCommerciale();
 };
 
 #endif
