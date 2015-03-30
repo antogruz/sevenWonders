@@ -90,7 +90,7 @@ void Jeu::draft() {
   }
   
   std::vector<Carte> tampon = getHumain().getHand();
-  int i = 1;
+  unsigned int i = 1;
   for (std::vector<Joueur>::iterator it = joueurs.begin(); it != joueurs.end(); it++) {
     if (i < joueurs.size()) {
       it->setHand((it+1)->getHand());
@@ -115,7 +115,7 @@ bool Jeu::buyTo(Side side) {
 }
 
 void Jeu::nouveauTour() {
-  for (int i = 0; i < joueurs.size(); i++) {
+  for (unsigned int i = 0; i < joueurs.size(); i++) {
     joueurs[i].nouveauTour(joueurs[((joueurs.size()+i-1) % joueurs.size())], joueurs[((i+1) % joueurs.size())]);
   }
 }

@@ -65,7 +65,7 @@ void Joueur::show() const {
   }
 }
 
-bool Joueur::construire(int numero) {
+bool Joueur::construire(unsigned int numero) {
   if (numero < 1 or numero > hand.size()) {
     return false;
   }
@@ -78,7 +78,7 @@ bool Joueur::construire(int numero) {
   return true;
 }
 
-bool Joueur::vendre(int numero) {
+bool Joueur::vendre(unsigned int numero) {
   if (numero < 1 or numero > hand.size()) {
     return false;
   }

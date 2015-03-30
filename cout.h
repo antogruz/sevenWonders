@@ -20,7 +20,7 @@ class Cout {
   void check(Ressource ressource);
   void check(int pieces);
   int getPieces() const { return pieces; };
-  int nombreRestant() const;
+  unsigned int nombreRestant() const;
 };
 
 std::ostream& operator << (std::ostream& Out, const Cout& cout);

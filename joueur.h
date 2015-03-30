@@ -38,8 +38,8 @@ class Joueur {
   void addCarte(Carte carte);
   void addConstruction(Carte carte);
   void show() const;
-  bool construire(int numero);
-  bool vendre(int numero);
+  bool construire(unsigned int numero);
+  bool vendre(unsigned int numero);
   bool ageFini() const;
   bool canAfford(Cout cout) const;
   bool isHumain() const;

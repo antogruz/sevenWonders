@@ -49,8 +49,8 @@ void Cout::check(int pieces) {
   }
 }
 
-int Cout::nombreRestant() const {
-  int somme = 0;
+unsigned int Cout::nombreRestant() const {
+  unsigned int somme = 0;
   for (std::map<Ressource, int>::const_iterator it = ressources.begin(); it != ressources.end(); it++) {
     somme += it->second;
   }
